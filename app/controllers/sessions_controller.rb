@@ -9,8 +9,8 @@ class SessionsController < ApplicationController
     password = params[:session][:password]
     if login(email, password)
       flash[:success] = 'ログインに成功しました。'
-      # users#showへ⇒カレンダーへ変更
-      redirect_to @user
+      # カレンダーへ
+      redirect_to blogs_url
     else
       flash.now[:danger] = 'ログインに失敗しました。'
       # ログインフォームへ

@@ -1,7 +1,7 @@
 
 <header class="mb-4">
   <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-    <a class="navbar-brand" href="/">Calendars</a>
+    <a class="navbar-brand" href="/blogs">Calendars</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -9,7 +9,7 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
       <ul class="navbar-nav">
         <% if logged_in? %>
-          <li class="nav-item"><%= link_to current_user.name, users_path, class: 'nav-link' %></li>
+          <li class="nav-item"><%= link_to current_user.name, blogs_url, class: 'nav-link' %></li>
           <li class="nav-item"><%= link_to 'Logout', logout_path, method: :delete, class: "nav-link" %></li>
         <% else %>
           <li class="nav-item"><%= link_to 'Signup', signup_path, class: 'nav-link' %></li>

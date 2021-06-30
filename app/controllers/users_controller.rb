@@ -21,8 +21,8 @@ class UsersController < ApplicationController
 
     if @user.save
       flash[:success] = 'ユーザを登録しました。'
-      # users#showのアクションへ強制的に移動⇒カレンダー画面へ遷移するよう変更
-      redirect_to @user
+      # カレンダーへ
+      redirect_to blogs_url
     else
       flash.now[:danger] = 'ユーザの登録に失敗しました。'
       # newを表示

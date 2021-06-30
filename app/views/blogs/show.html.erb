@@ -1,0 +1,23 @@
+
+<p id="notice"><%= notice %></p>
+<div class="show">
+<p>
+  <strong>タイトル</strong>
+  <%= @blog.title %>
+</p>
+
+<p>
+  <strong>内容</strong>
+  <%= @blog.content %>
+</p>
+
+<p>
+  <strong>日時</strong>
+  <%= @blog.date_time.strftime("20%y/%m/%d/%A") %>
+</p>
+
+<%= link_to '編集', edit_blog_path(@blog), class: 'btn btn btn-primary' %>
+<%= link_to '消去',blog_path(@blog.id), method: :delete, data: { confirm: '本当に?' }, class: 'btn btn btn-primary' %>
+<%= link_to '戻る', blogs_path, class: 'btn btn btn-primary' %>
+
+</div>
