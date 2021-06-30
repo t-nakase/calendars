@@ -1,5 +1,6 @@
 class BlogsController < ApplicationController
   before_action :require_user_logged_in, only: [:index, :show]
+  before_action :correct_user, only: [:show, :edit, :update, :destroy]
 
   def index
     # binding.pry
@@ -7,11 +8,7 @@ class BlogsController < ApplicationController
     @blog = Blog.new
   end
   
-  def new
-  end
-
   def show
-    @blog = Blog.find(params[:id])
   end
 
   def create
@@ -28,18 +25,15 @@ class BlogsController < ApplicationController
   end
 
   def destroy
-    @blog = Blog.find(params[:id])
     @blog.destroy
     flash[:success] = '削除しました'
     redirect_to blogs_path
   end
 
   def edit
-    @blog = Blog.find(params[:id])
   end
 
   def update
-    @blog = Blog.find(params[:id])
     if @blog.update(blog_parameter)
       flash[:success] = '編集しました'
       redirect_to blogs_path
