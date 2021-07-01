@@ -7,6 +7,7 @@
 <div class="col-md-4">
 
 <%= form_with(model: @blog, local: true) do |form| %>
+  <%= render 'layouts/error_messages', model: form.object %>
 
   <div class="title">
     <div class="form-tag">タイトル</div>
@@ -40,7 +41,7 @@
 
   <% blogs.each do |blog| %>
     <div>
-      <%= link_to blog.title, blog %>
+      <%= link_to blog.title.truncate(8), blog %>
     </div>
   <% end %>
 <% end %>

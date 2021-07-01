@@ -7,7 +7,11 @@ class BlogsController < ApplicationController
     @blogs = current_user.blogs.order(id: :desc).page(params[:page])
     @blog = Blog.new
   end
-  
+
+  def new
+    @blog = Blog.new
+  end
+
   def show
   end
 
@@ -19,8 +23,9 @@ class BlogsController < ApplicationController
         flash[:success] = '正常に登録されました'
         redirect_to blogs_path
     else
-        flash.now[:danger] = '登録されませんでした'
-        redirect_to blogs_path
+        flash.now[:danger] = '登録に失敗しました'
+        @blogs = current_user.blogs.order(id: :desc).page(params[:page])
+        render :index
     end
   end
 
